@@ -15,7 +15,7 @@ export default {
   name: 'CookieIframe',
   data(){
     return{
-      cookies: this.$cookies
+      cookies: this.$cookiesNuxtControl
     }
   },
 

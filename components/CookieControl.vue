@@ -78,7 +78,7 @@ export default {
     return{
       saved: true,
       colorsSet: false,
-      cookies: this.$cookies
+      cookies: this.$cookiesNuxtControl
     }
   },
 
@@ -108,7 +108,7 @@ export default {
       this.cookies.set({name: 'cookie_control_enabled_cookies', value: consent ? enabledCookies.join(',') : '', expires: this.expirationDate});
       if(!reload){
         this.cookies.setConsent()
-        this.$cookies.modal = false;
+        this.$cookiesNuxtControl.modal = false;
       } else window.location.reload(true);
     },
 
@@ -141,7 +141,7 @@ export default {
         }
         if(!isChanged) Object.assign(text, this.cookies.text)
       }
-      this.$set(this.$cookies, 'text', text);
+      this.$set(this.$cookiesNuxtControl, 'text', text);
     }
   },
 
