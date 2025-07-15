@@ -34,8 +34,8 @@
                   <ul :key="type.id">
                     <li v-for="cookie in cookies[type]" :key="cookie.id">
                       <div class="cookieControl__ModalInputWrapper">
-                        <input v-if="type === 'necessary' && cookie.name !== 'functional'" :id="getCookieFirstName(cookie.name)" type="checkbox" disabled checked/>
-                        <input v-else :id="getCookieFirstName(cookie.name)" type="checkbox" :checked="cookies.enabledList.includes(cookie.identifier || cookies.slugify(getCookieFirstName(cookie.name))) || (cookies.get('cookie_control_consent').length === 0 && cookie.initialState === true)" @change="toogleCookie(cookie)"/>
+                        <input v-if="type === 'necessary' && cookie.name !== 'functional'" :id="getCookieFirstName(cookie.name)" :aria-label="getCookieFirstName(cookie.name)" tabindex="0" type="checkbox" disabled checked/>
+                        <input v-else :id="getCookieFirstName(cookie.name)" :aria-label="getCookieFirstName(cookie.name)" type="checkbox" :checked="cookies.enabledList.includes(cookie.identifier || cookies.slugify(getCookieFirstName(cookie.name))) || (cookies.get('cookie_control_consent').length === 0 && cookie.initialState === true)" @change="toogleCookie(cookie)"/>
                         <label :for="getCookieFirstName(cookie.name)" v-html="getName(cookie.name)"/>
                         <span class="cookieControl__ModalCookieName">
                           {{ getName(cookie.name) }}
@@ -55,8 +55,8 @@
               </template>
               <div class="cookieControl__ModalButtons">
                 <button @click="setConsent({type: 'partial'})" v-text="cookies.text.save"/>
-                <button @click="setConsent" v-text="cookies.text.acceptAll"/>
-                <button @click="setConsent({declineAll: true, consent: false})" v-text="cookies.text.declineAll"/>
+                <button role="button" :aria-label="cookies.text.acceptAll" tabindex="0" @click="setConsent" v-text="cookies.text.acceptAll"/>
+                <button role="button" :aria-label="cookies.text.declineAll" tabindex="0" @click="setConsent({declineAll: true, consent: false})" v-text="cookies.text.declineAll"/>
               </div>
             </div>
           </div>
