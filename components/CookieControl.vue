@@ -36,7 +36,7 @@
                       <div class="cookieControl__ModalInputWrapper">
                         <input v-if="type === 'necessary' && cookie.name !== 'functional'" :id="getCookieFirstName(cookie.name)" :aria-label="getCookieFirstName(cookie.name)" tabindex="0" type="checkbox" disabled checked/>
                         <input v-else :id="getCookieFirstName(cookie.name)" :aria-label="getCookieFirstName(cookie.name)" type="checkbox" :checked="cookies.enabledList.includes(cookie.identifier || cookies.slugify(getCookieFirstName(cookie.name))) || (cookies.get('cookie_control_consent').length === 0 && cookie.initialState === true)" @change="toogleCookie(cookie)"/>
-                        <label :for="getCookieFirstName(cookie.name)" v-html="getName(cookie.name)"/>
+                        <!-- <label :for="getCookieFirstName(cookie.name)" v-html="getName(cookie.name)"/> -->
                         <span class="cookieControl__ModalCookieName">
                           {{ getName(cookie.name) }}
                           <span v-if="cookie.description" v-html="getDescription(cookie.description)"/>
